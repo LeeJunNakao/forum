@@ -1,5 +1,8 @@
 # INSTRUCTIONS
 
-## Starting
+## Development
+
+### Starting project
 - Use .devcontainer for development
-- Start project: `poetry run python forum/manage.py runserver`
+- Start server: `./run-dev server`
+- Start tailwind: `./run-dev tailwind`

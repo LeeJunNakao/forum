@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$1" == "server" ]; then
+    poetry run python forum/manage.py runserver
+elif [ "$1" == "tailwind" ]; then
+    poetry run python forum/manage.py tailwind start
+else
+    echo "Uso: $0 [server|tailwind]"
+    exit 1
+fi

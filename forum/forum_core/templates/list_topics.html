@@ -16,8 +16,31 @@
 
 
 <body>
-    <div class="bg-yellow-100">
-        <h1>OLá! seja bem vindo!</h1>
+    <div>
+        <header class="border-b border-black flex justify-center">
+            <h1 class="text-3xl">Forum</h1>
+        </header>
+
+        
+        <div class="flex justify-center mt-4">
+            <div>
+                <div class="py-4">
+                    <span class="text-xl font-medium">Topics</span>
+                </div>
+                {% for topic in topics %}
+                <div class="{% if not forloop.last %}border-b{% endif %} w-[600px]">
+                    <div class="flex flex-col">
+                        <a href="/topic/{{ topic.id }}" class="hover:font-medium">
+                            <span>{{ topic.title }}</span>
+                        </a>
+                        <span class="text-xs" >posts: {{ topic.num_posts}}</span>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
 </body>
 
