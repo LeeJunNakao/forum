@@ -25,6 +25,7 @@ module.exports = {
          * Adjust the following line to match your project structure.
          */
         '../../**/templates/**/*.html',
+        '../../**/static/**/*.css'
 
         /**
          * JS: If you use Tailwind CSS in JavaScript, uncomment the following lines and make sure
@@ -58,10 +59,22 @@ module.exports = {
         {
             pattern: /border-[0|2|4]/
         },
+        {
+            pattern: /h-[0|2|4|8|16|32]/
+        },
+        {
+            pattern: /p-[0|2|4|8|16|32]/
+        },
+        {
+            pattern: /[border|bg]-[blue|red]-[100|200|300|400|500|600]/
+        },
         "resize-none",
         "border-black",
         "outline-none",
         "focus:[box-shadow:none]",
-        "focus:border-black"
+        "focus:border-black",
+        "border-red-100",
+        "focus:outline-none"
+
     ]
 }

@@ -25,6 +25,12 @@
 
         <div class="flex justify-center h-[calc(100%-52px)]">
             <div class="p-4 bg-white w-[1000px] overflow-auto">
+                <div class="flex justify-between">
+                    <div>Welcome, {{ user }}</div>
+                    <button class="btn">
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </button>
+                </div>
                 {% block content %}{% endblock %}
             </div>
         </div>

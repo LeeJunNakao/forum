@@ -1,0 +1,25 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% tailwind_css %}
+</head>
+
+<body>
+    <main class="flex justify-center items-center w-screen h-screen">
+        <div class="p-4 bg-blue-100">
+            <form class="flex flex-col gap-4" method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ login_form }}
+                <button class="btn btn-blue" type="submit">Login</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
