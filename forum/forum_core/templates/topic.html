@@ -1,22 +1,37 @@
-{% load static %}
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    {% tailwind_css %}
-</head>
-
-<body>
-    <div class="flex justify-center items-center h-screen">
-        <div class="border">
-            <div>TOPIC: {{ topic.title }}</div>
-            <div>{{ topic.description }}</div>
-        </div>
+{% block content %}
+<div class="flex flex-col">
+    <div class="flex flex-col flex-1 gap-4">
+        <div class="text-2xl font-medium">{{ topic.title }}</div>
+        <div class="w-full h-max-[500px] rounded bg-slate-100 p-2">{{ topic.description }}</div>
     </div>
-</body>
 
-</html>
+    <div class="mt-4">
+        <h3 class="text-2xl">Answer</h3>
+        <form method="post" action="{% url 'topic_details' id=id %}">
+            {% csrf_token %}
+            {{ form }}
+            <button name="save" class="bg-blue-500 text-white rounded p-2 px-4">Save</button>
+        </form>
+    </div>
+
+    <div class="flex flex-col gap-2 mt-8">
+        {% for post in posts %}
+        <div class="flex flex-col gap-2">
+            <div class="flex gap-2 border-b border-black">
+                <div class="font-medium">{{ post.creator.username }}</div>
+                <div>{{ post.created_at }}</div>
+            </div>
+            <div class="rounded bg-slate-100 p-2">{{ post.content }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {{ pagination }}
+</div>
+
+<script>
+
+</script>
+{% endblock %}

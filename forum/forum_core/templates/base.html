@@ -1,0 +1,35 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    {% tailwind_css %}
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <div class="h-screen bg-slate-200">
+        <header class="flex justify-center bg-blue-600">
+            <h1 class="text-3xl py-2 text-white hover:cursor-pointer"><a href="/">Forum</a></h1>
+        </header>
+
+
+        <div class="flex justify-center h-[calc(100%-52px)]">
+            <div class="p-4 bg-white w-[1000px] overflow-auto">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

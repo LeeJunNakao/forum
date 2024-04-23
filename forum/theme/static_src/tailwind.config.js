@@ -54,4 +54,14 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
     ],
+    safelist: [
+        {
+            pattern: /border-[0|2|4]/
+        },
+        "resize-none",
+        "border-black",
+        "outline-none",
+        "focus:[box-shadow:none]",
+        "focus:border-black"
+    ]
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="p-4 flex gap-2 items-center">
+        <div class="flex">
+            {% if has_previous %}
+            <a href="?page=1" class="hover:fill-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    viewBox="0 0 100 125" width="25px" height="25px" style="display: block; margin: auto;">
+                    <g transform="translate(0, 15) rotate(180, 45, 50)">
+                        <polygon
+                            points="47.466,76.501 51.611,80.839 84.401,49.511 51.575,19.161 47.502,23.566 75.642,49.583" />
+                        <polygon
+                            points="19.596,79.028 52.626,49.507 19.557,20.971 15.637,25.514 43.534,49.586 15.598,74.555" />
+                    </g>
+                </svg>
+            </a>
+            <a href="?page={{ previous_page }}" class="hover:fill-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    viewBox="0 0 100 125" width="25px" height="25px" style="display: block; margin: auto;">
+                    <g transform="translate(0, 15) rotate(180, 45, 50)">
+                        <polygon
+                            points="19.596,79.028 52.626,49.507 19.557,20.971 15.637,25.514 43.534,49.586 15.598,74.555" />
+                    </g>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+
+        <div>
+            <span class="current">
+                {{ current_page }} of {{ total_pages }}
+            </span>
+        </div>
+
+
+        <div class="flex">
+            {% if has_next %}
+
+            <button>
+                <a href="?page={{ next_page }}" class="hover:fill-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        viewBox="0 0 100 125" width="25px" height="25px" style="display: block; margin: auto;">
+                        <g transform="translate(0, 15)">
+                            <polygon points=" 19.596,79.028 52.626,49.507 19.557,20.971 15.637,25.514 43.534,49.586
+                            15.598,74.555" />
+                        </g>
+                    </svg>
+                </a>
+            </button>
+            <a href="?page={{ total_pages }}" class="hover:fill-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    viewBox="0 0 100 125" width="25px" height="25px" style="display: block; margin: auto;">
+                    <g transform="translate(0, 15)">
+                        <polygon
+                            points="47.466,76.501 51.611,80.839 84.401,49.511 51.575,19.161 47.502,23.566 75.642,49.583" />
+                        <polygon
+                            points="19.596,79.028 52.626,49.507 19.557,20.971 15.637,25.514 43.534,49.586 15.598,74.555" />
+                    </g>
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
