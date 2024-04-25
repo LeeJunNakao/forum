@@ -6,20 +6,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forum</title>
     {% tailwind_css %}
 </head>
 
 <body>
-    <main class="flex justify-center items-center w-screen h-screen">
-        <div class="p-4 bg-blue-100">
-            <form class="flex flex-col gap-4" method="post" action="{% url 'login' %}">
-                {% csrf_token %}
-                {{ login_form }}
-                <button class="btn btn-blue" type="submit">Login</button>
-            </form>
-        </div>
-    </main>
+    <div class="h-screen">
+        <header class="flex justify-center bg-blue-600">
+            <h1 class="text-3xl py-2 text-white hover:cursor-pointer"><a href="/">Forum</a></h1>
+        </header>
+
+        <main class="flex justify-center items-center w-screen h-[calc(100%-52px)]">
+
+            <div class="p-4 bg-blue-100">
+                <form class="flex flex-col gap-4" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    {{ login_form }}
+                    <button class="btn btn-blue" type="submit">Login</button>
+                </form>
+            </div>
+        </main>
+
+    </div>
+
 </body>
 
 </html>
