@@ -14,6 +14,8 @@ class LoginView(View):
         if user is not None:
             do_login(request, user)
             return redirect('homepage')
+        
+        return self.get(request)
 
 class LogoutView(View):
     def get(self, request):

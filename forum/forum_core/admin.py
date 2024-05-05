@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Topic, Reply
+from .models.topic import Topic, Reply
 
 admin.site.register(Topic)
 admin.site.register(Reply)

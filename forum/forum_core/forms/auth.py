@@ -1,5 +1,5 @@
-from forum_core.widgets import  Input, InputPassword
-from forum_core.models import User
+from forum_core.widgets.inputs import  Input, InputPassword
+from forum_core.models.topic import User
 from django import forms
 
 class LoginForm(forms.ModelForm):

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col gap-4">
+    {{ title }}
+
+    <form method="post" action="{% url 'settings' %}" class="mt-4">
+        {% csrf_token %}
+        {{ profile_form }}
+        <div class="flex flex-row-reverse my-4">
+            <button name="save_profile" class="bg-blue-500 text-white rounded p-2 px-4">Save</button>
+        </div>
+    </form>
+
+    <form method="post" action="{% url 'settings' %}">
+        {% csrf_token %}
+        {{ password_form }}
+        <div class="flex flex-row-reverse my-4">
+            <button name="save_password" class="bg-blue-500 text-white rounded p-2 px-4">Save</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+</script>
+{% endblock %}

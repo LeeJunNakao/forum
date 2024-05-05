@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
+<div class="flex justify-between">
     <span class="text-xl font-medium">Topics</span>
+
+    <a href="/topic/new" class="link">
+        New topic
+    </a>
+
+
+
 </div>
 {% for topic in topics %}
 <div class="{% if not forloop.last %}border-b{% endif %}">
