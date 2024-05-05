@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col gap-4">
+    {{ title }}
+
+    <form method="post" action="{% url 'register' %}" class="mt-4 form">
+        {% csrf_token %}
+        {{ form }}
+        <div class="flex flex-row-reverse my-4">
+            <button name="save_profile" class="btn btn-blue">Save</button>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+</script>
+{% endblock %}

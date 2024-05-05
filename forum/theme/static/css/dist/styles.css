@@ -11969,6 +11969,12 @@ select {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }

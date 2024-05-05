@@ -21,3 +21,7 @@
 .link:hover {
     @apply text-blue-700;
 }
+
+.form {
+    @apply flex flex-col gap-2;
+}
