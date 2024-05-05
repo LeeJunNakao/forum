@@ -5,6 +5,9 @@ from django.shortcuts import render
 from forum_core.forms.settings import ProfileForm, PasswordlForm
 from forum_core.widgets.forms import SectionForm
 from forum_core.widgets.titles import PageTitle
+from forum_core.services.upload import upload_file
+from forum_core.models.settings import UserProfile
+
 
 class SettingsView(View):
     @method_decorator(login_required(login_url="login"))
@@ -26,11 +29,21 @@ class SettingsView(View):
 
         if 'save_profile' in request.POST:
             form = ProfileForm(request.POST, instance=user)
-
+            avatar_file = request.FILES.get('avatar')
+                    
             if form.is_valid():
                 form.save()
+            
+            if avatar_file: 
+                is_uploaded, avatar_url = upload_file(avatar_file)
+                if is_uploaded:
+                    user_profile = UserProfile.objects.get(user=user)
+                    if user_profile:
+                        user_profile.avatar_url = avatar_url
+                    else:
+                        user_profile = UserProfile(user=user, avatar_url=avatar_url)
+                    user_profile.save()
 
-        
         if 'save_password' in request.POST:
             form = PasswordlForm(request.POST, instance=user)
 

@@ -1,9 +1,10 @@
 import boto3
+from uuid import uuid4
 from botocore.exceptions import ClientError
 import os
 
 
-def upload_file(file, bucket, object_name=None):
+def upload_file(file, object_name=None):
     """Upload a file to an S3 bucket
 
     :param file_name: File to upload
@@ -12,14 +13,17 @@ def upload_file(file, bucket, object_name=None):
     :return: True if file was uploaded, else False
     """
 
-    # If S3 object_name was not specified, use file_name
-    if object_name is None:
-        object_name = os.path.basename(file_name)
-
     # Upload the file
     s3_client = boto3.client('s3')
+    file_uuid = uuid4()
+    object_name = object_name or file.name
+    object_name = f"{file_uuid}-{object_name}"
+
     try:
-        response = s3_client.upload_fileobj(file, bucket, object_name)
+        bucket_name = os.environ.get("FILES_BUCKET")
+        s3_client.upload_fileobj(file, bucket_name, object_name)
+        public_url = f"{s3_client.meta.endpoint_url}/{bucket_name}/{object_name}"
+
+        return True, public_url
     except ClientError as e:
-        return False
-    return True
+        return False, ''

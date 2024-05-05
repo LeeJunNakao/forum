@@ -10,7 +10,7 @@ class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(widget=Input())
     last_name = forms.CharField(widget=Input())
     email = forms.CharField(widget=Input())
-    avatar = forms.FileField()
+    avatar = forms.FileField(required=False)
 
     
 class PasswordlForm(forms.ModelForm):

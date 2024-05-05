@@ -32,7 +32,6 @@ class RegisterView(View):
     def post(self, request):
         form = RegisterForm(request.POST)
 
-        print("??????????????????????????????", form.is_valid())
         if form.is_valid():
             user = User(**form.cleaned_data)
             user.set_password(form.cleaned_data['password'])

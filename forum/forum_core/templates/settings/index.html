@@ -4,7 +4,7 @@
 <div class="flex flex-col gap-4">
     {{ title }}
 
-    <form method="post" action="{% url 'settings' %}" class="mt-4">
+    <form method="post" action="{% url 'settings' %}" class="mt-4" enctype="multipart/form-data">
         {% csrf_token %}
         {{ profile_form }}
         <div class="flex flex-row-reverse my-4">
