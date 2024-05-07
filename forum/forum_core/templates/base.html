@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forum</title>
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     {% tailwind_css %}
@@ -25,7 +25,7 @@
 
         <div class="flex justify-center h-[calc(100%-52px)]">
             <div class="p-4 bg-white w-[1000px] overflow-auto">
-                {% block content %}{% endblock %}
+                {% block base_content %}{% endblock %}
             </div>
         </div>
 

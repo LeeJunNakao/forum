@@ -1,16 +1,18 @@
-from forum_core.widgets.inputs import Input, InputPassword
+from forum_core.widgets.inputs import Input, InputPassword, ImageUploadInput
 from django import forms
 from django.contrib.auth.models import User
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
 
+    avatar = forms.FileField(widget=ImageUploadInput('avatar'), label='',required=False)
     first_name = forms.CharField(widget=Input())
     last_name = forms.CharField(widget=Input())
     email = forms.CharField(widget=Input())
-    avatar = forms.FileField(required=False)
+
 
     
 class PasswordlForm(forms.ModelForm):

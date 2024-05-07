@@ -1,4 +1,7 @@
 from django import forms
+from django.template import loader
+from django.forms.widgets import Widget
+from django.utils.safestring import mark_safe
 
 class TextArea(forms.Textarea):
     def __init__(self):
@@ -16,3 +19,26 @@ class InputPassword(Input):
         rest_kwargs = { key: value for key, value in kwargs.items() if key != 'attrs'}
         super().__init__(attrs={**(attrs or dict()), "type": "password"}, **rest_kwargs)
 
+class ImageUploadInput(Widget):
+    template_name = 'widgets/inputs/image-upload-input.html'
+
+    class Media:
+        css = {
+            "all": ["widgets/inputs/image-upload-input/style.css"]
+        }
+        js = ['widgets/inputs/image-upload-input/script.js']
+    
+    def __init__(self, attr_name, attr_id = None, **kwargs):
+        super().__init__(**kwargs)
+        self.attr_name = attr_name
+        self.attr_id = attr_id or attr_name
+    
+    def get_context(self):
+        return {"input_name": self.attr_name, "input_id": self.attr_id}
+
+    def render(self, *args, **kwargs):
+
+        context = self.get_context()
+        template = loader.get_template(self.template_name).render(context)
+
+        return mark_safe(template)
