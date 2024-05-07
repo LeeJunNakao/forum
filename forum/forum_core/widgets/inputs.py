@@ -21,12 +21,6 @@ class InputPassword(Input):
 
 class ImageUploadInput(Widget):
     template_name = 'widgets/inputs/image-upload-input.html'
-
-    class Media:
-        css = {
-            "all": ["widgets/inputs/image-upload-input/style.css"]
-        }
-        js = ['widgets/inputs/image-upload-input/script.js']
     
     def __init__(self, attr_name, attr_id = None, **kwargs):
         super().__init__(**kwargs)
