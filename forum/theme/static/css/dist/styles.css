@@ -2570,6 +2570,14 @@ select {
   width: 9rem;
 }
 
+.w-12 {
+  width: 3rem;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -4187,6 +4195,10 @@ select {
 
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-b-2xl {

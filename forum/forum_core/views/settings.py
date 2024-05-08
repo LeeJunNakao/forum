@@ -16,10 +16,14 @@ class SettingsView(View):
 
         profile_form = ProfileForm(instance=user)
         password_form = PasswordlForm()
-        user_profile = UserProfile.objects.get(user=user)
 
-        if user_profile:
-            profile_form.set_avatar(user_profile.avatar_url)
+        try:
+            user_profile = UserProfile.objects.get(user=user)
+        
+            if user_profile:
+                profile_form.set_avatar(user_profile.avatar_url)
+        except:
+            pass
    
         return render(request, 'settings/index.html', { 
             "profile_form": profile_form, 

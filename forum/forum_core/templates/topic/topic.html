@@ -3,6 +3,9 @@
 {% block content %}
 <div class="flex flex-col">
     <div class="flex flex-col flex-1 gap-4">
+        <div>
+            <img class="w-16 h-16 rounded-full" src="{{ topic.avatar_url}}">
+        </div>
         <div class="text-2xl font-medium">{{ topic.title }}</div>
         <div class="w-full h-max-[500px] rounded bg-slate-100 p-2">{{ topic.description }}</div>
     </div>
@@ -18,12 +21,16 @@
 
     <div class="flex flex-col gap-2 mt-8">
         {% for post in posts %}
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col flex-1 gap-2">
             <div class="flex gap-2 border-b border-black">
                 <div class="font-medium">{{ post.creator.username }}</div>
                 <div>{{ post.created_at }}</div>
             </div>
-            <div class="rounded bg-slate-100 p-2">{{ post.content }}</div>
+            <div class="flex gap-4 flex-1">
+                <img class="w-16 h-16 rounded-full" src="{{ post.avatar_url }}">
+                <div class="flex flex-1 rounded bg-slate-100 p-2">{{ post.content }}</div>
+            </div>
+
         </div>
         {% endfor %}
     </div>
