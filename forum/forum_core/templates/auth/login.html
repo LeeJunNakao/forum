@@ -1,38 +1,23 @@
-{% load static %}
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum</title>
-    {% tailwind_css %}
-</head>
+{% block base_content %}
 
-<body>
-    <div class="h-screen">
-        <header class="flex justify-center bg-blue-600">
-            <h1 class="text-3xl py-2 text-white hover:cursor-pointer"><a href="/">Forum</a></h1>
-        </header>
 
-        <main class="flex justify-center items-center w-screen h-[calc(100%-52px)]">
+<main class="flex flex-1 h-full justify-center items-center">
 
-            <div class="p-4 bg-blue-100">
-                <form class="flex flex-col gap-4" method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    {{ login_form }}
-                    <button class="btn btn-blue" type="submit">Login</button>
-                    <div class="flex justify-center">
-                        <a class="link" href="/register">Register</a>
-                    </div>
-
-                </form>
+    <div class="p-4 bg-blue-100">
+        <form class="flex flex-col gap-4" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ login_form }}
+            <button class="btn btn-blue" type="submit">Login</button>
+            <div class="flex justify-center">
+                <a class="link" href="/register">Register</a>
             </div>
-        </main>
 
+        </form>
     </div>
+</main>
 
-</body>
 
-</html>
+
+{% endblock %}

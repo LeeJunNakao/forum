@@ -18,7 +18,8 @@ class SettingsView(View):
         password_form = PasswordlForm()
         user_profile = UserProfile.objects.get(user=user)
 
-        profile_form.set_avatar(user_profile.avatar_url)
+        if user_profile:
+            profile_form.set_avatar(user_profile.avatar_url)
    
         return render(request, 'settings/index.html', { 
             "profile_form": profile_form, 
