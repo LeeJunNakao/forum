@@ -9,10 +9,12 @@ class ProfileForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email']
 
     avatar = forms.FileField(widget=ImageUploadInput('avatar'), label='',required=False)
-    first_name = forms.CharField(widget=Input())
-    last_name = forms.CharField(widget=Input())
-    email = forms.CharField(widget=Input())
+    first_name = forms.CharField(widget=Input(), label='First name')
+    last_name = forms.CharField(widget=Input(), label="Last name")
+    email = forms.CharField(widget=Input(), label="Email")
 
+    def set_avatar(self, avatar_url):
+        self.fields['avatar'].widget.set_image_src(avatar_url)
 
     
 class PasswordlForm(forms.ModelForm):

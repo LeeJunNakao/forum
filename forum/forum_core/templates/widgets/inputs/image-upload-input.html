@@ -3,15 +3,20 @@
 <link rel="stylesheet" href="{% static 'widgets/inputs/image-upload-input/style.css' %}">
 
 <div class="image-upload flex flex-col gap-2 w-min">
-    <div class="image-preview border border-blue-500 rounded">
+    <div class="flex items-center justify-center border border-blue-500 bg-blue-400 rounded w-36 h-36">
         <div>
-            <span class="no-file-message">No file</span>
+            {% if image_src %}
+            <img src="{{ image_src }}">
+            {% else %}
+            <span class="no-file-message text-white">No image</span>
+            {% endif %}
+
         </div>
     </div>
 
     <label for="{{ input_id }}" class="image-upload-label btn btn-blue flex justify-center">
         <span>Select file</span>
-        <input type="file" id="{{ input_id }}" name="{{ input_name }}" accept="image/*" />
+        <input class="hidden" type="file" id="{{ input_id }}" name="{{ input_name }}" accept="image/*" />
     </label>
 </div>
 

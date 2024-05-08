@@ -28,7 +28,8 @@ class ImageUploadInput(Widget):
         self.attr_id = attr_id or attr_name
     
     def get_context(self):
-        return {"input_name": self.attr_name, "input_id": self.attr_id}
+        image_src = getattr(self, 'image_src', '')
+        return {"input_name": self.attr_name, "input_id": self.attr_id, "image_src": image_src}
 
     def render(self, *args, **kwargs):
 
@@ -36,3 +37,6 @@ class ImageUploadInput(Widget):
         template = loader.get_template(self.template_name).render(context)
 
         return mark_safe(template)
+
+    def set_image_src(self, image_src):
+        self.image_src = image_src 

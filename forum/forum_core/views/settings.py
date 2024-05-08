@@ -16,9 +16,12 @@ class SettingsView(View):
 
         profile_form = ProfileForm(instance=user)
         password_form = PasswordlForm()
+        user_profile = UserProfile.objects.get(user=user)
 
+        profile_form.set_avatar(user_profile.avatar_url)
+   
         return render(request, 'settings/index.html', { 
-            "profile_form": SectionForm().render("Profile", profile_form), 
+            "profile_form": profile_form, 
             "password_form": SectionForm().render("Password",password_form),
             "title":  PageTitle().render("Settings"),
         })
